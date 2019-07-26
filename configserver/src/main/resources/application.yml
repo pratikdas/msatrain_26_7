@@ -1,0 +1,20 @@
+server:
+  port: 8888
+spring:
+  cloud:
+    config:
+      server:
+        jdbc:
+          sql: select KEY, VALUE from CONFIG_PROPERTIES where APPLICATION=? and PROFILE=? and LABEL=?
+          order: 1
+  datasource:
+    url: jdbc:postgresql://127.0.0.1:5432/postgres
+    driver-class-name: org.postgresql.Driver
+    username: fabuser
+    password: fab123
+    hikari:
+      maximum-pool-size: 10
+      connection-timeout: 5000
+  profiles:
+    active:
+      - jdbc
