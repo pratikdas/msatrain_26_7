@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: orderprocessing-replicaset
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: orderprocessing
+  template:
+    metadata:
+      labels:
+        app: orderprocessing
+    spec:
+      containers:
+      -  name: orderprocessing
+         image: pratikdas/orderprocessing
